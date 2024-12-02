@@ -54,6 +54,14 @@ namespace PunchClockWS.WorkerService
             }
         }
 
+        public List<Worker> GetAllEmployees()
+        {
+            DataBase db = new DataBase();
+            List<Worker> employees = db.GetAllEmployees();
+            return employees;
+        }
+
+
         private string DetermineRecordType(Record lastRecord, DateTime timeStamp)
         {
             TimeSpan startWork = new TimeSpan(7, 0, 0);

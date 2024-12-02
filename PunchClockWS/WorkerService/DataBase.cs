@@ -90,5 +90,30 @@ namespace PunchClockWS.WorkerService
                 }
             }
         }
+
+
+        public List<Worker> GetAllEmployees()
+        {
+            List<Worker> employees = new List<Worker>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT Id, Name FROM [WEBAPPS].[dbo].[Employees]";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Worker employee = new Worker(
+                                Convert.ToInt32(reader["Id"]),
+                                reader["Name"].ToString());
+                            employees.Add(employee);
+                        }
+                    }
+                }
+            }
+            return employees;
+        }
     }
 }

@@ -34,6 +34,13 @@ namespace PunchClockWS
             return msg;
         }
 
+        [WebMethod]
+        public List<Worker> ListEmployees()
+        {
+            WorkerImpl wsi = new WorkerImpl();
+            return wsi.GetAllEmployees();
+        }
+
 
         [WebMethod]
         public string HelloWorld()

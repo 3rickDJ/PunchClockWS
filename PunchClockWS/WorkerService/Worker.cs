@@ -11,6 +11,11 @@ namespace PunchClockWS.WorkerService
         public int Id { get; set; }
         public string Name { get; set; }
 
+        public Worker()
+        {
+
+        }
+
         public Worker(int id, string name)
         {
             Id = id;
